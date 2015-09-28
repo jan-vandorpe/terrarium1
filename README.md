@@ -2,7 +2,7 @@
 scrum project voor cursisten Oostende oktober 2015
 PO Jan Vandorpe
 collaborators:
-	Ely Schoofs
+	Ely Schoof
 	Tijs Deleu
 	Rubven Jackxen
 	Cedric Lagast
