@@ -4,63 +4,63 @@ require_once("data/organismeDAO.php");
 
 class organismeservice
   {
-
-  public static function createOrganisme($soort, $kracht, $rij, $kolom)
-  {
-    $id = OrganismeDAO::createOrganisme($soort, $kracht, $rij, $kolom);
-    // organisme object aanmaken
-    $organisme = new Organisme();
-    $organisme->id = $id;
-    $organisme->kracht = $kracht;
-    $organisme->soort = $soort;
-    return $organisme;
-  }
-
   /*
    *  array aanmaken met organismen op basis van opgegeven grootte
    * 
    * 2-5 carnivoren (soort 3)
    * 2-5 herbivoren (soort 2)
    * 1-3 planten    (soort 1)
+   * 
+   * 
    */
 
-  public static function createOrganismeLijst($grootte)
+  public static function initNewArrayOrganismen($grootte)
   {
-    $arrOrganismelijst = array();
+// 2-5 carnivoren
+    organismeservice::loopCreate(3, rand(2, 5), $grootte);
+// 2-5 herbivoren
+    organismeservice::loopCreate(2, rand(2, 5), $grootte);
+// 1-3 plantenµ
+    organismeservice::loopCreate(1, rand(1, 3), $grootte);
+  }
+  public static function initExistingArrayOrganismen()
+  {
+    return organismeservice::getAllOrganismen();
+  }
 
-    // 2-5 carnivoren
-    $aantalCarnivoren = rand(2, $grootte);
-    for ($i = 1; $i <= $aantalCarnivoren; $i++)
+  public static function loopCreate($soort, $aantal, $grootte)
+  {
+    for ($i = 1; $i <= $aantal; $i++)
       {
       do
         {
-          $Crij = rand(1,$grootte);
-          $Ckolom = rand(1,$grootte);
-        } while(organismeservice::checkIfFree($Crij,$Ckolom)==false);
-      $carnivoor = organismeservice::createOrganisme(3, 0, $Crij, $Ckolom);
+        $rij = rand(1, $grootte);
+        $kolom = rand(1, $grootte);
+        $check = organismeservice::checkPosition($kolom,$rij);
+        } while ($check == false);
+      $organisme = organismeservice::createOrganisme($soort, 0, $kolom, $rij);
       }
-    // herbivoren
-    $aantalHerbivoren = rand(2, $grootte);
-    for ($i = 1; $i <= $aantalHerbivoren; $i++)
+  }
+
+  public static function checkPosition($kolom, $rij)
+  {
+    $arrOrg = organismeservice::getAllOrganismen();
+    foreach ($arrOrg as $org)
       {
-      do
-        {
-          $Hrij = rand(1,$grootte);
-          $Hkolom = rand(1,$grootte);
-        } while(organismeservice::checkIfFree($Crij,$Ckolom)==false);
-      $herbivoor = organismeservice::createOrganisme(2, 0, $Hrij, $Hkolom);
-      }
-    // planten
-    $aantalPlanten = rand(1, $grootte / 2);
-    for ($i = 1; $i <= $aantalPlanten; $i++)
+      if ($org->kolom == $kolom && $org->rij == $rij)
       {
-      do
-        {
-          $Prij = rand(1,$grootte);
-          $Pkolom = rand(1,$grootte);
-        } while(organismeservice::checkIfFree($Crij,$Ckolom)==false);
-      $plant = organismeservice::createOrganisme(1, 0, $Prij, $Pkolom);
+        return false;
       }
+      }
+    return true;
+  }
+
+  public static function createOrganisme($soort, $kracht, $kolom, $rij)
+  {
+    $id = OrganismeDAO::createOrganisme($soort, $kracht, $kolom, $rij);
+// organisme object aanmaken
+    $organisme = new Organisme($id, $soort, $kracht, $kolom, $rij);
+    return $organisme;
   }
 
   public static function getAllOrganismen()
@@ -68,18 +68,14 @@ class organismeservice
     $arrOrganismen = OrganismeDAO::getAllOrganismen();
     return $arrOrganismen;
   }
-
-  public static function checkIfFree($rij, $kolom)
+  
+  public static function checkGameStarted()
   {
     $arrOrganismen = organismeservice::getAllOrganismen();
-
-    foreach ($arrOrganismen as $organisme)
-      {
-      if (($rij == $organisme->rij) && ($kolom == $organisme->kolom))
-      {
-        return false;
-      }
-      }
+    if(empty($arrOrganismen))
+    {
+      return false;
+    }
     return true;
   }
 
