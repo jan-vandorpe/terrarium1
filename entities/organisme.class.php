@@ -6,8 +6,10 @@ class Organisme
   public $id;
   public $soort;
   public $kracht;
+  public $kolom;
+  public $rij;
 
-  public function __construct($id, $soort, $kracht)
+  public function __construct($id, $soort, $kracht, $kolom, $rij)
   {
     $this->setId($id);
   }
@@ -32,16 +34,27 @@ class Organisme
   {
     return $this->soort;
   }
-    public function setKracht($kracht)
+    public function setKolom($kolom)
   {
-    $this->kracht = $kracht;
+    $this->kracht = $kolom;
     return $this;
   }
 
-  public function getKracht()
+  public function getKolom()
   {
-    return $this->kracht;
+    return $this->kolom;
   }
+      public function setRij($rij)
+  {
+    $this->rij = $rij;
+    return $this;
+  }
+
+  public function getRij()
+  {
+    return $this->rij;
+  }
+  
   }
 
 ?>
