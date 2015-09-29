@@ -12,6 +12,10 @@ class Organisme
   public function __construct($id, $soort, $kracht, $kolom, $rij)
   {
     $this->setId($id);
+    $this->setSoort($soort);
+    $this->setKracht($kracht);
+    $this->setKolom($kolom);
+    $this->setRij($rij);
   }
 
   public function setId($id)
