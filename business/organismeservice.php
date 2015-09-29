@@ -36,7 +36,7 @@ class organismeservice
         {
           $Crij = rand(1,$grootte);
           $Ckolom = rand(1,$grootte);
-        } while(checkIfFree($Crij,$Ckolom)==false);
+        } while(organismeservice::checkIfFree($Crij,$Ckolom)==false);
       $carnivoor = organismeservice::createOrganisme(3, 0, $Crij, $Ckolom);
       }
     // herbivoren
@@ -47,7 +47,7 @@ class organismeservice
         {
           $Hrij = rand(1,$grootte);
           $Hkolom = rand(1,$grootte);
-        } while(checkIfFree($Crij,$Ckolom)==false);
+        } while(organismeservice::checkIfFree($Crij,$Ckolom)==false);
       $herbivoor = organismeservice::createOrganisme(2, 0, $Hrij, $Hkolom);
       }
     // planten
@@ -58,7 +58,7 @@ class organismeservice
         {
           $Prij = rand(1,$grootte);
           $Pkolom = rand(1,$grootte);
-        } while(checkIfFree($Crij,$Ckolom)==false);
+        } while(organismeservice::checkIfFree($Crij,$Ckolom)==false);
       $plant = organismeservice::createOrganisme(1, 0, $Prij, $Pkolom);
       }
   }
