@@ -28,6 +28,7 @@ class Organisme
   {
     return $this->id;
   }
+
   public function setSoort($soort)
   {
     $this->soort = $soort;
@@ -38,9 +39,21 @@ class Organisme
   {
     return $this->soort;
   }
-    public function setKolom($kolom)
+
+  public function setKracht($kracht)
   {
-    $this->kracht = $kolom;
+    $this->kracht = $kracht;
+    return $this;
+  }
+
+  public function getKracht()
+  {
+    return $this->kracht;
+  }
+
+  public function setKolom($kolom)
+  {
+    $this->kolom = $kolom;
     return $this;
   }
 
@@ -48,7 +61,8 @@ class Organisme
   {
     return $this->kolom;
   }
-      public function setRij($rij)
+
+  public function setRij($rij)
   {
     $this->rij = $rij;
     return $this;
@@ -58,7 +72,7 @@ class Organisme
   {
     return $this->rij;
   }
-  
+
   }
 
 ?>
