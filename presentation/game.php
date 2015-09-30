@@ -9,56 +9,29 @@
   </head>
   <body>
     <!--Start HEADER-->	
-    <header>
-      <div class="container-fluid">
-        <div class="pull-right">
-          <a href="#" title="Facebook" class="btn btn-info btn-sm">
-            <span class="glyphicon glyphicon-thumbs-up"></span>
-          </a>
-          <a href="#" title="Share" class="btn btn-info btn-sm">
-            <span class="glyphicon glyphicon-share"></span>
-          </a>
-          <a href="#" title="Settings" class="btn btn-info btn-sm">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>	
-      </div>
-    </header>
+    <?php include('presentation/locked/header.php') ?>
     <!--Start HOOFDMENU-->		
     <?php include('presentation/locked/navigation.php') ?>
     <!--Start jumbotron EYECATCHER-->	
-    <section>			
-      <div class="container-fluid">		
-        <div class="jumbotron">
-          <h2>jumbotron</h2>
-        </div>
-      </div>
-    </section>
-    <!--Start sectie SPELREGELS-->			
-    <section>			
-      <div class="container-fluid">
-        <div class="col-md-2">
-          <h2>Spelregels</h2>
-          <div class="row">
-            <div class="col-md-12">
-              <p>paragraaf1</p>
-              <p>paragraaf2</p>
-            </div>	
-          </div>
-        </div>
-    </section>
+    <?php include('presentation/locked/jumbotron.php') ?>
     <!--Start sectie ROOSTER-->			
     <section>			
       <div class="container-fluid">
         <div class="row">
-          <h1>Game: <?php print $_GET["game"];?></h1>
+          <div class="col-md-2">
+            <img src="img/Herbivoor.svg" alt="afbeelding1" title="Herbivoor" class="hidden-xs">
+          </div>	   
           <div class="col-md-4">
+            <h1>Game: <?php print $_GET["game"]; ?></h1>
             <?php var_dump($arrGameOrganismen) ?>
             <p>Grid 1, vorige versie</p>
           </div>
           <div class="col-md-4">
             <p>Grid 2, nieuwe versie</p>
-          </div>					
+          </div>
+           <div class="col-md-2">
+            <img src="img/Carnivoor.svg" alt="afbeelding2" title="Carnivoor" class="hidden-xs">
+          </div>
         </div>
       </div>
     </section>
@@ -85,11 +58,7 @@
       </div>	
     </section>
     <!--Start FOOTER-->			
-    <footer>			
-      <div class="container-fluid">
-        <p>footer</p>
-      </div>
-    </footer>
+    <?php include("presentation/locked/footer.php") ?>
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -9,6 +9,8 @@ session_start();
 if (isset($_POST["grootte"]))
 {
   gameService::initNewGame($_POST["grootte"]);
+  header('Location:index.php');
+  die();
 }
 
 // MAAK GAMELIJST AAN
