@@ -8,14 +8,16 @@ class Organisme
   public $kracht;
   public $kolom;
   public $rij;
+  public $gameid;
 
-  public function __construct($id, $soort, $kracht, $kolom, $rij)
+  public function __construct($id, $soort, $kracht, $kolom, $rij, $gameid)
   {
     $this->setId($id);
     $this->setSoort($soort);
     $this->setKracht($kracht);
     $this->setKolom($kolom);
     $this->setRij($rij);
+    $this->setGameid($gameid);
   }
 
   public function setId($id)
@@ -71,6 +73,17 @@ class Organisme
   public function getRij()
   {
     return $this->rij;
+  }
+
+  public function setGameid($gameid)
+  {
+    $this->gameid = $gameid;
+    return $this;
+  }
+
+  public function getGameid()
+  {
+    return $this->gameid;
   }
 
   }

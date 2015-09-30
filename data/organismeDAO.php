@@ -13,9 +13,9 @@ class OrganismeDAO
     $dbh = null;
     return $id;
   }
-  public static function getAllOrganismen()
+  public static function getAllOrganismen($gameid)
   {
-    $sql = "select * from organismen";
+    $sql = "select * from organismen where gameid=".$gameid;
     $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
     $result = $dbh->query($sql);
     $arrOrganismen = array();
@@ -42,6 +42,11 @@ class OrganismeDAO
     }
     $dbh = null;
     return $organisme;
+  }
+  
+  public static function get()
+  {
+    
   }
   }
 ?>

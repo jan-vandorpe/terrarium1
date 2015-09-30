@@ -6,10 +6,11 @@ session_start();
 
 // GROOTTE INSTELLEN
 $grootte = 6;
+$gameid = 1;
 // MAAK ORGANISMELIJST AAN
-if (organismeservice::checkGameStarted() == false)
+if (organismeservice::checkGameStarted($gameid) == false)
 {
-  organismeservice::initNewOrganismen($grootte);
+  organismeservice::initNewOrganismen($grootte, $gameid);
 }
 
 if (organismeservice::checkGameStarted() == true && !isset($_SESSION['arrOrganismen']))
@@ -19,6 +20,8 @@ if (organismeservice::checkGameStarted() == true && !isset($_SESSION['arrOrganis
 }
 
 // TABEL MAKEN
+
+/*
 if(isset($_SESSION["arrOrganismen"]))
 {
   for($i=1;$i<=$grootte;$i++)
@@ -38,7 +41,7 @@ if(isset($_SESSION["arrOrganismen"]))
       print "<br>";
     }
 }
-
+*/
 
 if (!isset($_get['page']))
 {
