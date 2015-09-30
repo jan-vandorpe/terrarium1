@@ -4,19 +4,21 @@ require_once("business/organismeservice.php");
 
 session_start();
 
+// GROOTTE INSTELLEN
+$grootte = 6;
 // MAAK ORGANISMELIJST AAN
 if (organismeservice::checkGameStarted() == false)
 {
-  organismeservice::initNewArrayOrganismen(6);
+  organismeservice::initNewOrganismen($grootte);
 }
 
 if (organismeservice::checkGameStarted() == true && !isset($_SESSION['arrOrganismen']))
 {
-  $arrOrganismen = organismeservice::initExistingArrayOrganismen();
+  $arrOrganismen = organismeservice::initExistingArrayOrganismen($grootte);
   $_SESSION["arrOrganismen"] = $arrOrganismen;
 }
 
-var_dump($_SESSION["arrOrganismen"]);
+
 
 if (!isset($_get['page']))
 {

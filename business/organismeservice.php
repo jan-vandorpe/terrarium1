@@ -14,7 +14,7 @@ class organismeservice
    * 
    */
 
-  public static function initNewArrayOrganismen($grootte)
+  public static function initNewOrganismen($grootte)
   {
 // 2-5 carnivoren
     organismeservice::loopCreate(3, rand(2, 5), $grootte);
@@ -23,8 +23,9 @@ class organismeservice
 // 1-3 plantenµ
     organismeservice::loopCreate(1, rand(1, 3), $grootte);
   }
-  public static function initExistingArrayOrganismen()
+  public static function initExistingArrayOrganismen($grootte)
   {
+    // array aanmaken met alle organismen en lege posities
     return organismeservice::getAllOrganismen();
   }
 
