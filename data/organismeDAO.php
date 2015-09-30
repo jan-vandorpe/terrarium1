@@ -27,5 +27,21 @@ class OrganismeDAO
     $dbh = null;
     return $arrOrganismen;
   }
+  public static function getOrganismeFromPosition($kolom,$rij)
+  {
+    $sql = "select * from organismen where kolom=".$kolom." and rij=".$rij;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $result = $dbh->query($sql);
+    $organisme = null;
+    if(!empty($result))
+    {
+    foreach ($result as $r)
+      {
+      $organisme = new Organisme($r['id'],$r['soort'],$r['kracht'],$r['kolom'],$r['rij']);
+      }
+    }
+    $dbh = null;
+    return $organisme;
+  }
   }
 ?>
