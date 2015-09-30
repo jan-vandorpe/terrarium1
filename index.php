@@ -1,50 +1,32 @@
 <?php
 
 require_once("business/organismeservice.php");
+require_once("business/gameservice.php");
 
 session_start();
 
-// GROOTTE INSTELLEN
-$grootte = 6;
-$gameid = 1;
-// MAAK ORGANISMELIJST AAN
-if (organismeservice::checkGameStarted($gameid) == false)
+// CHECK FOR POST
+if (isset($_POST["grootte"]))
 {
-  organismeservice::initNewOrganismen($grootte, $gameid);
+  gameService::initNewGame($_POST["grootte"]);
 }
 
-if (organismeservice::checkGameStarted() == true && !isset($_SESSION['arrOrganismen']))
-{
-  $arrOrganismen = organismeservice::initExistingArrayOrganismen($grootte);
-  $_SESSION["arrOrganismen"] = $arrOrganismen;
-}
+// MAAK GAMELIJST AAN
+$gamelijst = gameService::getAllGames();
 
-// TABEL MAKEN
-
-/*
-if(isset($_SESSION["arrOrganismen"]))
-{
-  for($i=1;$i<=$grootte;$i++)
-    {
-    for($j=1;$j<=$grootte;$j++)
-      {
-        $organisme = organismeservice::checkPosition($j, $i);
-        if(isset($organisme))
-        {
-          print "[ ORGANISME ]";
-        }
-        if(!isset($organisme))
-        {
-          print "[  LEEG     ]";
-        }
-      }
-      print "<br>";
-    }
-}
-*/
-
-if (!isset($_get['page']))
+if (!isset($_GET['page']) && !isset($_GET['game']))
 {
   include 'presentation/homepage.php';
+}
+
+if (isset($_GET['game']))
+{
+  $arrGameOrganismen = organismeservice::getAllOrganismen($_GET['game']);
+  include 'presentation/game.php';
+}
+
+if (isset($_GET['page']))
+{
+  include 'presentation/'.$_GET['page'].'.php';
 }
 ?>

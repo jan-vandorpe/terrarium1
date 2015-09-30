@@ -4,6 +4,8 @@ require_once("data/organismeDAO.php");
 
 class organismeservice
   {
+
+  
   /*
    *  array aanmaken met organismen op basis van opgegeven grootte
    * 
@@ -45,16 +47,10 @@ class organismeservice
     $organisme = new Organisme($id, $soort, $kracht, $kolom, $rij, $gameid);
     return $organisme;
   }
-  
-   public static function initExistingArrayOrganismen($grootte)
-  {
-    // array aanmaken met alle organismen en lege posities
-    return organismeservice::getAllOrganismen();
-  }
 
   public static function checkPositionFree($kolom, $rij, $gameid)
   {
-    $arrOrg = organismeservice::getAllOrganismen();
+    $arrOrg = organismeservice::getAllOrganismen($gameid);
     foreach ($arrOrg as $org)
       {
       if ($org->kolom == $kolom && $org->rij == $rij && $org->gameid == $gameid)
@@ -67,24 +63,14 @@ class organismeservice
 
   public static function getAllOrganismen($gameid)
   {
-    $arrOrganismen = OrganismeDAO::getAllOrganismen();
+    $arrOrganismen = OrganismeDAO::getAllOrganismen($gameid);
     return $arrOrganismen;
-  }
-  
-  public static function checkGameStarted($gameid)
-  {
-    
   }
   
   public static function checkPosition($kolom,$rij)
   {
     $organisme = OrganismeDAO::getOrganismeFromPosition($kolom, $rij);
     return $organisme;
-  }
-  
-  public static function showGame($gameid)
-  {
-    
   }
 
   }
