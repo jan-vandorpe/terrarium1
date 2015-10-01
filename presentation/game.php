@@ -23,7 +23,7 @@
           </div>	   
           <div class="col-md-4">
             <h1>Game: <?php print $_GET["game"]; ?></h1>
-            <?php var_dump($arrGameOrganismen) ?>
+            <?php include ('raster.php'); ?>
             <p>Grid 1, vorige versie</p>
           </div>
           <div class="col-md-4">

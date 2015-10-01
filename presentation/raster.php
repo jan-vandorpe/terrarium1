@@ -1,6 +1,5 @@
 <?php
+print ('RASTER.PHP<br>');
+var_dump($arrGameOrganismen);
 
-/* 
- * HIER KOMT HET RASTER
- */
-
+?>
