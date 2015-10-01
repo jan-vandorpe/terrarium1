@@ -10,27 +10,40 @@
   position: relative;
   overflow: hidden;
 }
+/* voorbeeld */
+
 .innercell {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-image: url("../img/carnivoor.gif");
-  background-color: #1b224c;
+  /* background-color: #1b224c; */
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
-  /*text*/
+  background-position: center;/*text*/
   color: white;
   font-weight: bold;
   text-align: right;
 }
+.innercell:hover {
+  
+}
+.innercell span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 0.3em;
+  font-size: 1.5vw;
+}
+/* container raster */
 .matrix {
   background-color: black;
   border-style: solid;
   box-sizing: border-box;
-  width: 60%;
+  width: 70%;
+  background-image: url("../img/dirt.jpg");
 }
-
 /* CLEARFIX */
 .cf {clear:both}
 
