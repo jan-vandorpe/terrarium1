@@ -33,11 +33,12 @@
   font-weight: bold;
   text-align: right;
 }
+/* container raster */
 .matrix {
   background-color: black;
   border-style: solid;
   box-sizing: border-box;
-  width: 60%;
+  width: 40%;
 }
 /* CLEARFIX */
 .cf {clear:both}
