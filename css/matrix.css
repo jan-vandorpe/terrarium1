@@ -11,21 +11,12 @@
   overflow: hidden;
 }
 /* voorbeeld */
-.herbivoor {
-  background-image: url("../images/herbivoor.gif");
-}
-.carnivoor {
-  background-image: url("../images/carnivoor.gif");
-}
-.plant {
-  background-image: url("../images/plant.png");
-}
+
 .innercell {
   position: absolute;
   height: 100%;
   width: 100%;
-  /* background-image: url("../images/carnivoor.gif"); */
-  background-color: #1b224c;
+  /* background-color: #1b224c; */
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;/*text*/
@@ -33,12 +24,25 @@
   font-weight: bold;
   text-align: right;
 }
+.innercell:hover {
+  
+}
+.innercell span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 0.3em;
+  font-size: 1.5vw;
+}
 /* container raster */
 .matrix {
   background-color: black;
   border-style: solid;
   box-sizing: border-box;
-  width: 40%;
+  width: 70%;
+  background-image: url("../img/dirt.jpg");
 }
 /* CLEARFIX */
 .cf {clear:both}
