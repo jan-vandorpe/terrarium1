@@ -1,9 +1,9 @@
-/* OUTLINEZ*/
+/* OUTLINEZ
 
 body, header, section, footer, div {
 	outline:1px dashed red;
 }
-
+*/
 /* KLEURENSCHEMA 
 #B2A39A
 #FFD0B5
@@ -56,4 +56,12 @@ footer {
 
 .marg_l {
 	margin-left:1em;
+}
+
+/*IMAGES*/
+
+.minimg {
+    float:right;
+    height:4em;
+    width:auto;
 }
