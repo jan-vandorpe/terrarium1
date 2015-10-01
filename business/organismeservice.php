@@ -67,9 +67,9 @@ class organismeservice
     return $arrOrganismen;
   }
   
-  public static function checkPosition($kolom,$rij)
+  public static function checkPosition($kolom,$rij,$gameid)
   {
-    $organisme = OrganismeDAO::getOrganismeFromPosition($kolom, $rij);
+    $organisme = OrganismeDAO::getOrganismeFromPosition($kolom, $rij, $gameid);
     return $organisme;
   }
 

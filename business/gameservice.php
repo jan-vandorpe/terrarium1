@@ -14,4 +14,5 @@ class gameService
     $arrGames = GameDAO::getAllGames();
     return $arrGames;
   }
+
   }
