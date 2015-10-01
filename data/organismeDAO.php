@@ -27,9 +27,9 @@ class OrganismeDAO
     $dbh = null;
     return $arrOrganismen;
   }
-  public static function getOrganismeFromPosition($kolom,$rij)
+  public static function getOrganismeFromPosition($kolom,$rij,$gameid)
   {
-    $sql = "select * from organismen where kolom=".$kolom." and rij=".$rij;
+    $sql = "select * from organismen where kolom=".$kolom." and rij=".$rij. " and gameid=".$gameid;
     $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
     $result = $dbh->query($sql);
     $organisme = null;
@@ -37,16 +37,28 @@ class OrganismeDAO
     {
     foreach ($result as $r)
       {
-      $organisme = new Organisme($r['id'],$r['soort'],$r['kracht'],$r['kolom'],$r['rij']);
+      $organisme = new Organisme($r['id'],$r['soort'],$r['kracht'],$r['kolom'],$r['rij'],$r['gameid']);
       }
     }
     $dbh = null;
     return $organisme;
   }
   
-  public static function get()
+  public static function updatePosition($organisme)
   {
-    
+    $sql = "update organismen set kracht=". $organisme->kracht ."kolom=".$kolom.", rij=".$rij." where id=".$organisme->id;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $dbh = null;
+  }
+  
+  public static function deleteOrganisme($organisme)
+  {
+    $sql = "delete from organismen where id=".$organisme->id;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $dbh->exec($sql);
+    $dbh = null;
   }
   }
 ?>

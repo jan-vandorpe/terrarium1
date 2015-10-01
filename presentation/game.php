@@ -28,6 +28,7 @@
           </div>
           <div class="col-md-4">
             <p>Grid 2, nieuwe versie</p>
+            <?php var_dump(gameService::nextStep($arrGameOrganismen)); ?>
           </div>
            <div class="col-md-2">
             <img src="img/Carnivoor.svg" alt="afbeelding2" title="Carnivoor" class="hidden-xs">

@@ -31,5 +31,18 @@ class GameDAO
     $dbh = null;
     return $arrGames;
   }
+  
+  public static function getGameFromId($id)
+  {
+    $sql = "select * from games where id=".$id;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $result = $dbh->query($sql);
+    foreach ($result as $r)
+      {
+      $game = new Game($r['id'], $r["grootte"], $r["dag"]);
+      }
+    $dbh = null;
+    return $game;
+  }
 
   }
