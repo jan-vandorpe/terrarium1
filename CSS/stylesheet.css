@@ -13,30 +13,46 @@ body, header, section, footer, div {
 */
 
 body {
-	background-color:#B2A39A;
+	background-color:white;
 }
 
 header {
-	background-color:#77FFFE; 
+	background-color:whitesmoke; 
+}
+
+section {
+    background-color: white;
 }
 
 .jumbotron {
-	background-color:#4AB2B2;
+	background-color:#DAF3F8;
 }
 
 nav>.container-fluid {
-	background-color:#C1FFFF;
+	background-color:white;
 }
 
 section>.container-fluid {
-	background-color:#C1FFFF;
+	background-color:#EEFCFF;
 }
 
 footer {
-	background-color:#77FFFE;
+	background-color:whitesmoke;
 }
 
 /* STRUCTUUR & LAY-OUT */
+
+.marg_t {
+    margin-top:1em;
+}
+
+.marg_r {
+    margin-right:1em;
+}
+
+.marg_b {
+    margin-bottom:1em;
+}
 
 .marg_l {
 	margin-left:1em;
