@@ -44,9 +44,39 @@ class OrganismeDAO
     return $organisme;
   }
   
-  public static function get()
+  public static function getSoort($id)
   {
-    
+    $sql = "select soort from soort where id=".$id;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $result = $dbh->query($sql);
+    $soort = null;
+    if(!empty($result))
+    {
+    foreach ($result as $r)
+      {
+      $soort = $r['soort'];
+      }
+    }
+    $dbh = null;
+    return $soort;
   }
+
+   public static function getImage($id)
+  {
+    $sql = "select image from soort where id=".$id;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $result = $dbh->query($sql);
+    $image = null;
+    if(!empty($result))
+    {
+    foreach ($result as $r)
+      {
+      $image = $r['image'];
+      }
+    }
+    $dbh = null;
+    return $image;
+  }
+
   }
 ?>
