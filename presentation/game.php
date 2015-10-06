@@ -6,6 +6,7 @@
     <title>Scrum project in Bootstrap</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"  />
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"  />
+    <link rel="stylesheet" type="text/css" href="css/matrix.css"  />
   </head>
   <body>
     <!--Start HEADER-->	
