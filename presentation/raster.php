@@ -18,7 +18,7 @@ for ($rij=1; $rij<=$grootte; $rij++) {
             $soort = $positie->soort;
             $imgtitle = OrganismeDAO::getSoort($soort);
             $imgsrc = OrganismeDAO::getImage($soort);
-            $kracht = $positie->kracht;
+            if ($soort=="1") { $kracht = ""; } else { $kracht = $positie->kracht; }
             print ("<div class='cell'><div class='innercell'><img src='".$imgsrc."' title='".$imgtitle."'><span>".$kracht."</span></div></div>");
         } 
         else 
