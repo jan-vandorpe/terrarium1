@@ -1,26 +1,26 @@
 @charset "utf-8";
 /* verschillende groottes */
-.vijf .cell {
+.grootte5 .cell {
   width: calc(100%/5);
   padding-bottom: calc(100%/5);
 }
-.zes .cell {
+.grootte6 .cell {
   width: calc(100%/6);
   padding-bottom: calc(100%/6);
 }
-.zeven .cell {
+.grootte7 .cell {
   width: calc(100%/7);
   padding-bottom: calc(100%/7);
 }
-.acht .cell {
+.grootte8 .cell {
   width: calc(100%/8);
   padding-bottom: calc(100%/8);
 }
-.negen .cell {
+.grootte9 .cell {
   width: calc(100%/9);
   padding-bottom: calc(100%/9);
 }
-.tien .cell {
+.grootte10 .cell {
   width: calc(100%/10);
   padding-bottom: calc(100%/10);
 }
