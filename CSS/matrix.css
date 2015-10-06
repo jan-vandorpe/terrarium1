@@ -30,6 +30,7 @@
   border-style: solid;
   border-color: black;
   box-sizing: border-box;
+  border-width: 1px;
   float: left;
   position: relative;
   overflow: hidden; 
