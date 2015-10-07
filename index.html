@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, intitial-scale=1.0">
-		<title>Scrum project in Bootstrap</title>
+		<title>To eat or to be eaten</title>
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"  />
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.css"  />
 	</head>
@@ -32,12 +32,17 @@
 		</header>
 
 <!--Start jumbotron EYECATCHER-->	
-		<section>			
-			<div class="container-fluid marg_l marg_b marg_r">		
-				<div class="jumbotron">
-					<h2></h2>
-				</class>
+		<section>
+                    <div class="row">
+			<div class="container-fluid marg_l marg_b marg_r text-center">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="jumbotron">
+                                    <h2>To eat or to be eaten.<br><small>That is the question!</small></h2>
+                                </div>            
+                            </div>
 			</div>
+                    </div>        
 		</section>
 
 <!--Start sectie ROOSTER-->			
@@ -45,7 +50,7 @@
 			<div class="container-fluid marg_l marg_b marg_r">
 				<div class="row">
 					<div class="col-md-2">
-						<img src="img/Herbivoor.svg" alt="afbeelding1" title="Herbivoor" class="hidden-xs">
+						<img src="img/Herbivoor.svg" alt="afbeelding1" title="Herbivoor" class="hidden-xs hidden-sm">
 					</div>	
 					<div class="col-md-4">
 						<p>Grid 1, vorige versie</p>
@@ -54,7 +59,7 @@
 						<p>Grid 2, nieuwe versie</p>
 					</div>	
 					<div class="col-md-2">
-						<img src="img/Carnivoor_L.svg" alt="afbeelding2" title="Carnivoor" class="hidden-xs">
+						<img src="img/Carnivoor_L.svg" alt="afbeelding2" title="Carnivoor" class="hidden-xs hidden-sm">
 					</div>					
 				</div>
 			</div>
@@ -95,7 +100,7 @@
 
 <!--Start sectie SPELREGELS-->			
 		<section>			
-			<div class="container-fluid marg_l marg_b marg_r">
+			<div class="container-fluid marg_b">
 				<div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-3"></div>
@@ -114,19 +119,19 @@
                                                         </p>
 					</div></div>
                                         <div class="row">
-                                            <div class="col-md-3"><img src=img/plant.svg alt="mini plant" title="Plant" class="minimg hidden-xs"></div>
-						<div class="col-md-6">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-6">
 							
-                                                        
+                                                        <img src=img/plant.svg alt="mini plant" title="Plant" class="minimg hidden-xs pull-left">
                                                         <p>
                                                             Met de <em><b>planten</b></em> gebeurt aanvankelijk niks.
                                                         </p>
                                         </div></div>                
                                                         
 					<div class="row">
-                                            <div class="col-md-3"><img src=img/herbivoor.svg alt="mini herbivoor" title="herbivoor" class="minimg hidden-xs">  </div>
+                                                <div class="col-md-3"></div>
 						<div class="col-md-6">
-                                                         
+                                                        <img src=img/herbivoor.svg alt="mini herbivoor" title="herbivoor" class="minimg hidden-xs pull-left"> 
                                                         <p> 
                                                             Voor de <em><b>herbivoren</b></em> wordt gekeken naar het vakje rechts. Indien er in dit vakje een plant staat, zal de herbivoor deze opeten. 
                                                             Op dat moment verplaatst de Herbivoor zich naar de positie van de plant en stijgt het 'powerlevel' van de herbivoor met 1.
@@ -135,9 +140,9 @@
                                                         </p>
                                         </div></div>                
 					<div class="row">
-                                            <div class="col-md-3"><img src=img/carnivoor.svg alt="mini carnivoor" title="Carnivoor" class="minimg hidden-xs"> </div>
+                                            <div class="col-md-3"></div>
 						<div class="col-md-6">
-                                 
+                                                        <img src=img/carnivoor.svg alt="mini carnivoor" title="Carnivoor" class="minimg hidden-xs pull-left">
                                                         <p>
                                                             Voor de <em><b>Carnivoren</b></em> wordt ook eerst rechts gekeken. Als zich daar een Herbivoor bevindt, dan zal de Carnivoor deze opeten. 
                                                             De Carnivoor verplaatst zich naar rechts en zijn 'powerlevel' stijgt met 1. 
@@ -167,7 +172,7 @@
 
 <!--Start FOOTER-->			
 		<footer>			
-			<div class="container-fluid text-center marg_l marg_b marg_r">
+			<div class="container-fluid text-center marg_l marg_r">
                             <p>&copy; ESC - CLA - TDE - RJA | <a href="#">contact</a></p>
 			</div>
 		</footer>
