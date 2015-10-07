@@ -1,49 +1,45 @@
-/* OUTLINEZ
+/* OUTLINEZ*/
 
 body, header, section, footer, div {
 	outline:1px dashed red;
 }
-*/
+
 /* KLEURENSCHEMA 
-#B2A39A
-#FFD0B5
-#4AB2B2
-#C1FFFF
-#77FFFE
+lichtgrijs  - #EDD5D1
+lichroze    - #EDD5D1
+lichbruin   - #E3D6C6
+lichtgroen  - #DDE0CD
+oranje      - #F9A646
 */
 
 body {
-	background-color:white;
+	background-color:#E3D6C6;
 }
 
 header {
-	background-color:whitesmoke; 
-}
-
-section {
-    background-color: white;
+	background-color:#F9A646; 
 }
 
 .jumbotron {
-	background-color:#DAF3F8;
+	background-color:#DDE0CD;
 }
 
 nav>.container-fluid {
-	background-color:white;
+	background-color:#E3D6C6;
 }
 
 section>.container-fluid {
-	background-color:#EEFCFF;
+	background-color:#E3D6C6;
 }
 
 footer {
-	background-color:whitesmoke;
+	background-color:#F9A646;
 }
 
 /* STRUCTUUR & LAY-OUT */
 
-.marg_t {
-    margin-top:1em;
+.marg_l {
+	margin-left:1em;
 }
 
 .marg_r {
@@ -54,14 +50,6 @@ footer {
     margin-bottom:1em;
 }
 
-.marg_l {
-	margin-left:1em;
-}
-
-/*IMAGES*/
-
 .minimg {
-    float:right;
-    height:4em;
-    width:auto;
+    max-width: 5em;
 }
