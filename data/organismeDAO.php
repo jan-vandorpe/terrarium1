@@ -29,7 +29,7 @@ class OrganismeDAO
   }
   public static function getOrganismeFromPosition($kolom,$rij,$gameid)
   {
-    $sql = "select * from organismen where kolom=".$kolom." and rij=".$rij. " and gameid=".$gameid;
+    $sql = "select * from organismen where kolom=".$kolom." and rij=".$rij." and gameid=".$gameid;
     $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
     $result = $dbh->query($sql);
     $organisme = null;
@@ -44,7 +44,40 @@ class OrganismeDAO
     return $organisme;
   }
   
-  public static function updatePosition($organisme)
+  public static function getSoort($id)
+  {
+    $sql = "select soort from soort where id=".$id;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $result = $dbh->query($sql);
+    $soort = null;
+    if(!empty($result))
+    {
+    foreach ($result as $r)
+      {
+      $soort = $r['soort'];
+      }
+    }
+    $dbh = null;
+    return $soort;
+  }
+
+   public static function getImage($id)
+  {
+    $sql = "select image from soort where id=".$id;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $result = $dbh->query($sql);
+    $image = null;
+    if(!empty($result))
+    {
+    foreach ($result as $r)
+      {
+      $image = $r['image'];
+      }
+    }
+    $dbh = null;
+    return $image;
+  }
+    public static function updatePosition($organisme)
   {
     $sql = "update organismen set kracht=". $organisme->kracht ."kolom=".$kolom.", rij=".$rij." where id=".$organisme->id;
     $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
@@ -60,5 +93,7 @@ class OrganismeDAO
     $dbh->exec($sql);
     $dbh = null;
   }
+
   }
+
 ?>

@@ -2,7 +2,7 @@
 
 require_once("business/organismeservice.php");
 require_once("business/gameservice.php");
-require_once("business/rasterservice.php");
+require_once("business/soortservice.php");
 
 session_start();
 
@@ -32,4 +32,5 @@ if (isset($_GET['page']))
 {
   include 'presentation/'.$_GET['page'].'.php';
 }
+
 ?>

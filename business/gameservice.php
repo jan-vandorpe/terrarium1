@@ -1,5 +1,4 @@
 <?php
-
 require_once("data/gameDAO.php");
 require_once("data/organismeDAO.php");
 require_once("business/gameservice.php");
@@ -56,16 +55,16 @@ class gameService
         }
         if ($prevOrganisme->soort == $prevOrganismeRechts->soort)
         {
-          if($prevOrganisme->kracht > $prevOrganismeRechts->kracht)
+          if ($prevOrganisme->kracht > $prevOrganismeRechts->kracht)
           {
             
           }
-          if($prevOrganisme->kracht == $prevOrganismeRechts->kracht)
+          if ($prevOrganisme->kracht == $prevOrganismeRechts->kracht)
           {
             $nextOrganisme = $prevOrganisme;
-            array_push($arrNextStep,$nextOrganisme);
+            array_push($arrNextStep, $nextOrganisme);
           }
-          if($prevOrganisme->kracht < $prevOrganismeRechts->kracht)
+          if ($prevOrganisme->kracht < $prevOrganismeRechts->kracht)
           {
             
           }
@@ -79,14 +78,14 @@ class gameService
       }
       }
 
-      foreach($arrNextStep as $next)
-        {
-          if(in_array($next,$arrOpgegeten))
-          {
-            $key = array_search($next,$arrNextStep);
-            unset($arrNextStep[$key]);
-          }
-        }
+    foreach ($arrNextStep as $next)
+      {
+      if (in_array($next, $arrOpgegeten))
+      {
+        $key = array_search($next, $arrNextStep);
+        unset($arrNextStep[$key]);
+      }
+      }
     return $arrNextStep;
   }
 
@@ -159,3 +158,4 @@ class gameService
   }
 
   }
+

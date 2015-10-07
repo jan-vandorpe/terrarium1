@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,6 +6,7 @@
     <title>Scrum project in Bootstrap</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"  />
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"  />
+    <link rel="stylesheet" type="text/css" href="css/matrix.css"  />
   </head>
   <body>
     <!--Start HEADER-->	
@@ -24,19 +24,11 @@
           </div>	   
           <div class="col-md-4">
             <h1>Game: <?php print $_GET["game"]; ?></h1>
-            <?php 
-            $game = GameDAO::getGameFromId($_GET["game"]);
-            $grootte = $game->grootte;
-            $arrPrev = $arrGameOrganismen;
-            rasterservice::makeRaster($arrPrev);
-            ?>
+            <?php include ('raster.php'); ?>
           </div>
           <div class="col-md-4">
-            <?php 
-            $arrNext = gameService::nextStep($arrPrev,$grootte);
-            print "<br>";
-            rasterservice::makeRaster($arrNext);
-            ?>
+              <h1>Nieuwe versie</h1>
+            <?php include ('raster.php'); ?>
           </div>
            <div class="col-md-2">
             <img src="img/Carnivoor.svg" alt="afbeelding2" title="Carnivoor" class="hidden-xs">
@@ -73,3 +65,4 @@
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
+
