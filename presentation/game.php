@@ -25,10 +25,10 @@
           <div class="col-md-4">
             <h1>Game: <?php print $_GET["game"]; ?></h1>
             <?php include ('raster.php'); ?>
-            <p>Grid 1, vorige versie</p>
           </div>
           <div class="col-md-4">
-            <p>Grid 2, nieuwe versie</p>
+              <h1>Nieuwe versie</h1>
+            <?php include ('raster.php'); ?>
           </div>
            <div class="col-md-2">
             <img src="img/Carnivoor.svg" alt="afbeelding2" title="Carnivoor" class="hidden-xs">
