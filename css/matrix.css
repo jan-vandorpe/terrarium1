@@ -60,9 +60,9 @@
 /* TOOLTIPS */
 div > .tooltip, li > .tooltip, a > .tooltip, span > .tooltip {
 	opacity: 0;
-	margin-top: -30px;
+	margin-top: 30px;
 	visibility: hidden;
-	margin-left: -65px;
+	margin-left: 30px;
 
 	-webkit-transition-property:opacity, margin-top, visibility, margin-left;
 	-webkit-transition-duration:0.5s, 0.3s, 0.5s, 0.3s;  
@@ -86,9 +86,9 @@ div > .tooltip, li > .tooltip, a > .tooltip, span > .tooltip {
 		opacity: 1;
 		visibility: visible;
 		overflow: visible;
-		margin-top: -10px;
+		margin-top: 0;
 		display: inline;
-		margin-left: -40px;
+		margin-left: 0;
 		
 		-webkit-transition-property:opacity, margin-top, visibility, margin-left;
 		-webkit-transition-duration:0.5s, 0.3s, 0.5s, 0.3s;  

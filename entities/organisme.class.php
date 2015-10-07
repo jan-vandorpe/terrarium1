@@ -22,7 +22,7 @@ class Organisme
 
   public function setId($id)
   {
-    $this->id = $id;
+    $this->id = intval($id);
     return $this;
   }
 
@@ -33,7 +33,7 @@ class Organisme
 
   public function setSoort($soort)
   {
-    $this->soort = $soort;
+    $this->soort = intval($soort);
     return $this;
   }
 
@@ -44,7 +44,7 @@ class Organisme
 
   public function setKracht($kracht)
   {
-    $this->kracht = $kracht;
+    $this->kracht = intval($kracht);
     return $this;
   }
 
@@ -55,7 +55,7 @@ class Organisme
 
   public function setKolom($kolom)
   {
-    $this->kolom = $kolom;
+    $this->kolom = intval($kolom);
     return $this;
   }
 
@@ -66,7 +66,7 @@ class Organisme
 
   public function setRij($rij)
   {
-    $this->rij = $rij;
+    $this->rij = intval($rij);
     return $this;
   }
 
@@ -77,7 +77,7 @@ class Organisme
 
   public function setGameid($gameid)
   {
-    $this->gameid = $gameid;
+    $this->gameid = intval($gameid);
     return $this;
   }
 

@@ -36,7 +36,7 @@ class organismeservice
         $kolom = rand(1, $grootte);
         $check = organismeservice::checkPositionFree($kolom,$rij,$gameid);
         } while ($check == false);
-      $organisme = organismeservice::createOrganisme($soort, 0, $kolom, $rij, $gameid);
+      $organisme = organismeservice::createOrganisme($soort, 1, $kolom, $rij, $gameid);
       }
   }
   
@@ -60,6 +60,23 @@ class organismeservice
       }
     return true;
   }
+  public static function checkPosition($kolom,$rij,$gameid)
+  {
+  $organisme = OrganismeDAO::getOrganismeFromPosition($kolom, $rij, $gameid);
+  return $organisme;
+  }
+  
+  public static function checkPositionInArray($kol,$rij,$gamearray)
+  {
+    foreach($gamearray as $org)
+      {
+        if(($org->kolom == $kol) && ($org->rij == $rij))
+        {
+          return $org;
+        }
+      }
+      return false;
+  }
 
   public static function getAllOrganismen($gameid)
   {
@@ -67,10 +84,5 @@ class organismeservice
     return $arrOrganismen;
   }
   
-  public static function checkPosition($kolom,$rij,$gameid)
-  {
-    $organisme = OrganismeDAO::getOrganismeFromPosition($kolom, $rij, $gameid);
-    return $organisme;
-  }
 
   }

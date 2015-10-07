@@ -32,4 +32,5 @@ if (isset($_GET['page']))
 {
   include 'presentation/'.$_GET['page'].'.php';
 }
+
 ?>

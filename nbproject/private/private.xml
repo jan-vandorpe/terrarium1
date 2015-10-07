@@ -3,12 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/terrarium1/presentation/homepage.php</file>
-            <file>file:/C:/xampp/htdocs/terrarium1/presentation/game.php</file>
-            <file>file:/C:/xampp/htdocs/terrarium1/presentation/newgame.php</file>
-            <file>file:/C:/xampp/htdocs/terrarium1/index.php</file>
-            <file>file:/C:/xampp/htdocs/terrarium1/matrix.html</file>
-            <file>file:/C:/xampp/htdocs/terrarium1/presentation/raster.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/entities/organisme.class.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/css/matrix.css</file>
+            <file>file:/C:/xampp/htdocs/terrarium/business/soortservice.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/presentation/raster.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/data/gameDAO.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/entities/game.class.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/presentation/locked/spelregels.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/business/gameservice.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/index.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/business/rasterservice.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/data/soortDAO.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/entities/soort.class.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/data/organismeDAO.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/presentation/game.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/business/organismeservice.php</file>
+            <file>file:/C:/xampp/htdocs/terrarium/presentation/locked/jumbotron.php</file>
         </group>
     </open-files>
 </project-private>

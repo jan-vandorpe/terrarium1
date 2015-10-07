@@ -77,6 +77,23 @@ class OrganismeDAO
     $dbh = null;
     return $image;
   }
+    public static function updatePosition($organisme)
+  {
+    $sql = "update organismen set kracht=". $organisme->kracht ."kolom=".$kolom.", rij=".$rij." where id=".$organisme->id;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $dbh = null;
+  }
+  
+  public static function deleteOrganisme($organisme)
+  {
+    $sql = "delete from organismen where id=".$organisme->id;
+    $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+    $dbh->exec($sql);
+    $dbh = null;
+  }
 
   }
+
 ?>
