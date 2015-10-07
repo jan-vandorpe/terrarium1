@@ -2,6 +2,7 @@
 
 require_once("business/organismeservice.php");
 require_once("business/gameservice.php");
+require_once("business/soortservice.php");
 
 session_start();
 
