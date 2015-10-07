@@ -19,8 +19,8 @@ for ($rij=1; $rij<=$grootte; $rij++) {
                     $imgsrc = $soort->image;
                 }
             }
-            if ($posSoort=="1") { $kracht = ""; } else { $kracht = $positie->kracht; }
-            print ("<div class='cell'><div class='innercell'><img src='".$imgsrc."' title='".$imgtitle."'><span>".$kracht."</span></div></div>");
+            if ($posSoort=="1") { $kracht = ""; } else { $kracht = "Kracht:".$positie->kracht; }
+            print ("<div class='cell'><div class='innercell'><img src='".$imgsrc."' title='".$imgtitle."'><span class='tooltip'>".$imgtitle." ".$kracht."</span></div></div>");
         } else {
             print ("<div class='cell'><div class='innercell'></div></div>");
         }
