@@ -6,8 +6,7 @@ require_once("entities/game.class.php");
 class GameDAO
   {
 
-  public static function createGame($grootte)
-  {
+  public static function createGame($grootte) {
     $sql = "insert into games (grootte) values (" . $grootte . ")";
     $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
     $result = $dbh->query($sql);
@@ -17,8 +16,7 @@ class GameDAO
     return $game;
   }
 
-  public static function getAllGames()
-  {
+  public static function getAllGames() {
     $sql = "select * from games";
     $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
     $result = $dbh->query($sql);
