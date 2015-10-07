@@ -1,11 +1,9 @@
 <?php  
 $games = gameService::getAllGames();
-//$organisme = OrganismeDAO::getAllOrganismen($_GET["game"]);
+$soorten = soortService::getAllSoorten();
 
-foreach($games as $game) 
-{
-    if($game->id == $_GET["game"]) 
-    {
+foreach($games as $game) {
+    if($game->id == $_GET["game"]) {
         $grootte = $game->grootte;
     }
 }
@@ -13,16 +11,17 @@ print ("<div class='matrix grootte".$grootte." clearFix'>");
 for ($rij=1; $rij<=$grootte; $rij++) {
     for ($kol=1; $kol<=$grootte; $kol++) {
         $positie = organismeservice::checkPosition($kol,$rij,$_GET["game"]);
-        if (isset($positie))
-        {
-            $soort = $positie->soort;
-            $imgtitle = OrganismeDAO::getSoort($soort);
-            $imgsrc = OrganismeDAO::getImage($soort);
-            if ($soort=="1") { $kracht = ""; } else { $kracht = $positie->kracht; }
+        if (isset($positie)) {
+            $posSoort = $positie->soort;
+            foreach($soorten as $soort) {
+                if ($soort->id == $posSoort) {
+                    $imgtitle = $soort->soort;
+                    $imgsrc = $soort->image;
+                }
+            }
+            if ($posSoort=="1") { $kracht = ""; } else { $kracht = $positie->kracht; }
             print ("<div class='cell'><div class='innercell'><img src='".$imgsrc."' title='".$imgtitle."'><span>".$kracht."</span></div></div>");
-        } 
-        else 
-        {
+        } else {
             print ("<div class='cell'><div class='innercell'></div></div>");
         }
     }
