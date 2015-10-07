@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,12 +24,19 @@
           </div>	   
           <div class="col-md-4">
             <h1>Game: <?php print $_GET["game"]; ?></h1>
-            <?php var_dump($arrGameOrganismen) ?>
-            <p>Grid 1, vorige versie</p>
+            <?php 
+            $game = GameDAO::getGameFromId($_GET["game"]);
+            $grootte = $game->grootte;
+            $arrPrev = $arrGameOrganismen;
+            rasterservice::makeRaster($arrPrev);
+            ?>
           </div>
           <div class="col-md-4">
-            <p>Grid 2, nieuwe versie</p>
-            <?php var_dump(gameService::nextStep($arrGameOrganismen)); ?>
+            <?php 
+            $arrNext = gameService::nextStep($arrPrev,$grootte);
+            print "<br>";
+            rasterservice::makeRaster($arrNext);
+            ?>
           </div>
            <div class="col-md-2">
             <img src="img/Carnivoor.svg" alt="afbeelding2" title="Carnivoor" class="hidden-xs">

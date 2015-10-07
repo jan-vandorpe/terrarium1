@@ -21,103 +21,141 @@ class gameService
 
   public static function nextStep($arrPrevStep)
   {
+    $game = GameDAO::getGameFromId($arrPrevStep[0]->gameid);
+    $grootte = $game->grootte;
     $arrNextStep = array();
-    $arrPrev = $arrPrevStep;
-    // ARRAY VOLGORDE VERANDEREN
-    // ELK OBJECT AFLOPEN EN CONTROLEREN WAT RECHTS STAAT
-    foreach ($arrPrev as $PrevOrganisme)
-      {
-        // WAT STAAT ER RECHTS
-        $OrganismeRechts = OrganismeDAO::getOrganismeFromPosition(($PrevOrganisme->kolom + 1), $PrevOrganisme->rij, $PrevOrganisme->gameid);
-        
-        // ALS ER RECHTS NIETS STAAT
-        if (!isset($OrganismeRechts) && ($PrevOrganisme->soort > 1))
-        {
-          array_push($arrNextStep,gameService::moveRandom($PrevOrganisme));
-        }
+    $arrOpgegeten = array();
+    // SORTEER ARRAY
+    $arrPrevStep = gameService::sortArray($arrPrevStep);
 
-        // ALS ER RECHTS WEL IETS STAAT
-        if ((isset($OrganismeRechts)) && ($PrevOrganisme->soort > 1))
-        {
-          switch ($OrganismeRechts)
-            {
-            // ALS SOORT STERKER IS DAN SOORT RECHTS
-            case $PrevOrganisme->soort > $OrganismeRechts->soort:
-              array_push($arrNextStep, gameService::eat($PrevOrganisme, $OrganismeRechts));
-              unset($arrPrev[$OrganismeRechts->getId()]);
-              break;
-            // ALS SOORT EVEN STERK IS ALS SOORT RECHTS
-            case $PrevOrganisme->soort == $OrganismeRechts->soort:
-              if ($PrevOrganisme->soort == 2)
-              {
-                array_push($arrNextStep,gameService::newBorn($PrevOrganisme));
-              }
-              if ($PrevOrganisme->soort == 3)
-              {
-                array_push($arrNextStep,$PrevOrganisme);
-              }
-              break;
-            }
-        }
-        if($PrevOrganisme->soort == 1)
-        {
-          array_push($arrNextStep,$PrevOrganisme);
-        }
-      
+    foreach ($arrPrevStep as $prevOrganisme)
+      {
+      $prevOrganismeRechts = organismeservice::checkPositionInArray($prevOrganisme->kolom + 1, $prevOrganisme->rij, $arrPrevStep);
+      if ($prevOrganismeRechts == false && $prevOrganisme->soort > 1)
+      {
+        // MOVE RANDOM
+        $nextOrganisme = gameService::moveRandom($prevOrganisme, $arrPrevStep, $grootte);
+        array_push($arrNextStep, $nextOrganisme);
       }
-    // PLANTEN WILLEKEURIG TOEVOEGEN
-      return $arrNextStep;
+      if ($prevOrganismeRechts != false && $prevOrganisme->soort > 1)
+      {
+        // ONDERNEEM ACTIE
+        if ($prevOrganisme->soort > $prevOrganismeRechts->soort)
+        {
+          $prevOrganisme->kolom = $prevOrganisme->kolom + 1;
+          // OPETEN
+          $key = array_search($prevOrganismeRechts, $arrPrevStep);
+          array_push($arrOpgegeten, $arrPrevStep[$key]);
+          array_push($arrNextStep, $prevOrganisme);
+        }
+        if ($prevOrganisme->soort < $prevOrganismeRechts->soort)
+        {
+          // LATEN STAAN
+          $nextOrganisme = $prevOrganisme;
+          array_push($arrNextStep, $nextOrganisme);
+        }
+        if ($prevOrganisme->soort == $prevOrganismeRechts->soort)
+        {
+          if($prevOrganisme->kracht > $prevOrganismeRechts->kracht)
+          {
+            
+          }
+          if($prevOrganisme->kracht == $prevOrganismeRechts->kracht)
+          {
+            $nextOrganisme = $prevOrganisme;
+            array_push($arrNextStep,$nextOrganisme);
+          }
+          if($prevOrganisme->kracht < $prevOrganismeRechts->kracht)
+          {
+            
+          }
+        }
+      }
+      if ($prevOrganisme->soort == 1)
+      {
+        // LATEN STAAN
+        $nextOrganisme = $prevOrganisme;
+        array_push($arrNextStep, $nextOrganisme);
+      }
+      }
+
+      foreach($arrNextStep as $next)
+        {
+          if(in_array($next,$arrOpgegeten))
+          {
+            $key = array_search($next,$arrNextStep);
+            unset($arrNextStep[$key]);
+          }
+        }
+    return $arrNextStep;
   }
 
-  public static function moveRandom($organisme)
+  public static function sortArray($array)
+  {
+    $games = gameService::getAllGames();
+    foreach ($games as $game)
+      {
+      if ($game->id == $array[0]->gameid)
+      {
+        $grootte = $game->grootte;
+      }
+      }
+
+    $arrNew = array();
+    for ($i = 1; $i <= $grootte; $i++)
+      {
+      for ($j = 1; $j <= $grootte; $j++)
+        {
+        $org = organismeservice::checkPositionInArray($j, $i, $array);
+        if ($org != null)
+        {
+          array_push($arrNew, $org);
+        }
+        }
+      }
+    return $arrNew;
+  }
+
+  public static function moveRandom($organisme, $array, $grootte)
   {
     do
       {
-      $positie = rand(1,4);
-      switch($positie)
+      $posities = rand(1, 4);
+      $kolom = $organisme->kolom;
+      $rij = $organisme->rij;
+      switch ($posities)
         {
-        case 1:
-          $kolom = $organisme->kolom - 1;
-          $rij = $organisme->rij;
-          break;
-        case 2:
-          $kolom = $organisme->kolom + 1;
-          $rij = $organisme->rij;
-          break;
-        case 3:
-          $kolom = $organisme->kolom;
-          $rij = $organisme->rij - 1;
-          break;
-        case 4:
-          $kolom = $organisme->kolom;
-          $rij = $organisme->rij + 1;
-          break;
+        case 1: {
+            $kolom = $kolom + 1;
+            break;
+          }
+        case 2: {
+            $kolom = $kolom - 1;
+            break;
+          }
+        case 3: {
+            $rij = $rij + 1;
+            break;
+          }
+        case 4: {
+            $rij = $rij - 1;
+            break;
+          }
         }
-      $check = organismeservice::checkPositionFree($kolom, $rij, $organisme->gameid);
-      } while (($check == false) && $kolom > 0 && $rij > 0);
+      $check = organismeservice::checkPositionInArray($kolom, $rij, $array);
+      if ($rij == 0 || $kolom == 0)
+      {
+        // check = true -> opnieuw controleren
+        $check = true;
+      }
+      if ($rij > $grootte || $kolom > $grootte)
+      {
+        $check = true;
+      }
+      } while ($check != false);
     $organisme->kolom = $kolom;
     $organisme->rij = $rij;
     return $organisme;
-  }
-
-  public static function eat($organisme, $doodorganisme)
-  {
-    $organisme->kolom = $organisme->kolom + 1;
-    $organisme->kracht = $organisme->kracht + $doodorganisme->kracht;
-    return $organisme;
-  }
-
-  public static function newBorn($organisme)
-  {
-    $game = GameDAO::getGameFromId($organisme->gameid);
-    do
-      {
-      $rij = rand(1, $game->grootte);
-      $kolom = rand(1, $game->grootte);
-      $check = organismeservice::checkPositionFree($kolom, $rij, $organisme->gameid);
-      } while ($check == false);
-    $newBornOrganisme = new Organisme(0,$organisme->soort,1,$kolom,$rij,$organisme->gameid);
-    return $newBornOrganisme;
   }
 
   }

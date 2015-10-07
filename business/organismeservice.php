@@ -65,6 +65,18 @@ class organismeservice
   $organisme = OrganismeDAO::getOrganismeFromPosition($kolom, $rij, $gameid);
   return $organisme;
   }
+  
+  public static function checkPositionInArray($kol,$rij,$gamearray)
+  {
+    foreach($gamearray as $org)
+      {
+        if(($org->kolom == $kol) && ($org->rij == $rij))
+        {
+          return $org;
+        }
+      }
+      return false;
+  }
 
   public static function getAllOrganismen($gameid)
   {
