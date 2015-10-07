@@ -5,39 +5,51 @@ body, header, section, footer, div {
 }
 
 /* KLEURENSCHEMA 
-#B2A39A
-#FFD0B5
-#4AB2B2
-#C1FFFF
-#77FFFE
+lichtgrijs  - #EDD5D1
+lichroze    - #EDD5D1
+lichbruin   - #E3D6C6
+lichtgroen  - #DDE0CD
+oranje      - #F9A646
 */
 
 body {
-	background-color:#B2A39A;
+	background-color:#E3D6C6;
 }
 
 header {
-	background-color:#77FFFE; 
+	background-color:#F9A646; 
 }
 
 .jumbotron {
-	background-color:#4AB2B2;
+	background-color:#DDE0CD;
 }
 
 nav>.container-fluid {
-	background-color:#C1FFFF;
+	background-color:#E3D6C6;
 }
 
 section>.container-fluid {
-	background-color:#C1FFFF;
+	background-color:#E3D6C6;
 }
 
 footer {
-	background-color:#77FFFE;
+	background-color:#F9A646;
 }
 
 /* STRUCTUUR & LAY-OUT */
 
 .marg_l {
 	margin-left:1em;
+}
+
+.marg_r {
+    margin-right:1em;
+}
+
+.marg_b {
+    margin-bottom:1em;
+}
+
+.minimg {
+    max-width: 5em;
 }

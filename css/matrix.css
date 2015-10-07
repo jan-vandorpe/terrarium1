@@ -1,47 +1,68 @@
 @charset "utf-8";
+/* verschillende groottes */
+.grootte5 .cell {
+  width: calc(100%/5);
+  padding-bottom: calc(100%/5);
+}
+.grootte6 .cell {
+  width: calc(100%/6);
+  padding-bottom: calc(100%/6);
+}
+.grootte7 .cell {
+  width: calc(100%/7);
+  padding-bottom: calc(100%/7);
+}
+.grootte8 .cell {
+  width: calc(100%/8);
+  padding-bottom: calc(100%/8);
+}
+.grootte9 .cell {
+  width: calc(100%/9);
+  padding-bottom: calc(100%/9);
+}
+.grootte10 .cell {
+  width: calc(100%/10);
+  padding-bottom: calc(100%/10);
+}
+
 /* CSS MATRIX-spel */
 .cell {
-  width: 16.66666666666667%;
-  padding-bottom: 16.66666666666667%;
   border-style: solid;
   border-color: black;
   box-sizing: border-box;
+  border-width: 1px;
   float: left;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; 
 }
 /* voorbeeld */
-
-.innercell {
+.innercell { 
   position: absolute;
   height: 100%;
   width: 100%;
   /* background-color: #1b224c; */
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;/*text*/
+  background-position: center;
   color: white;
   font-weight: bold;
-  text-align: right;
-}
-.innercell:hover {
-  
+  text-align: right; 
 }
 .innercell span {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  text-align: center;
+  text-align: left;
   width: 100%;
   padding-bottom: 0.3em;
-  font-size: 1.5vw;
+  font-size: 1em;
 }
 /* container raster */
 .matrix {
   background-color: black;
   border-style: solid;
   box-sizing: border-box;
-  width: 70%;
+  width: 100%;
   background-image: url("../img/dirt.jpg");
 }
 /* CLEARFIX */
