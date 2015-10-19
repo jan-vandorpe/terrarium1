@@ -20,7 +20,11 @@ for ($rij=1; $rij<=$grootte; $rij++) {
                 }
             }
             if ($posSoort=="1") { $kracht = ""; } else { $kracht = "Kracht:".$positie->kracht; }
+<<<<<<< HEAD
             print ("<div class='cell'><div class='innercell'><img src='".$imgsrc."' alt='".$imgtitle."'><span class='tooltip'>".$imgtitle." ".$kracht."</span></div></div>");
+=======
+            print ("<div class='cell'><div class='innercell'><img src='".$imgsrc."' title='".$imgtitle."'><span class='tooltip'>".$imgtitle." ".$kracht."</span></div></div>");
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
         } else {
             print ("<div class='cell'><div class='innercell'></div></div>");
         }

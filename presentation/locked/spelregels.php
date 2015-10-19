@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 		<section>			
 			<div class="container-fluid marg_b">
 				<div class="col-md-12">
@@ -66,3 +67,17 @@
                                 </div>
                         </div>    
 		</section>
+=======
+<section>			
+  <div class="container-fluid">
+    <div class="col-md-2">
+      <h2>Spelregels</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <p>paragraaf1</p>
+          <p>paragraaf2</p>
+        </div>	
+      </div>
+    </div>
+</section>
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0

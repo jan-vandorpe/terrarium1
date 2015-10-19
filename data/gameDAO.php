@@ -8,12 +8,20 @@ class GameDAO
 
   public static function createGame($grootte)
   {
+<<<<<<< HEAD
     $sql = "insert into games (grootte, dag) values (" . $grootte . ", '1')";
+=======
+    $sql = "insert into games (grootte) values (" . $grootte . ")";
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
     $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
     $result = $dbh->query($sql);
     $id = $dbh->lastInsertId();
     $dbh = null;
+<<<<<<< HEAD
     $game = new Game($id, $grootte, 1);
+=======
+    $game = new Game($id, $grootte, 0);
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
     return $game;
   }
 
@@ -42,6 +50,7 @@ class GameDAO
       $game = new Game($r['id'], $r["grootte"], $r["dag"]);
       }
     $dbh = null;
+<<<<<<< HEAD
     if (isset($game)) {
         return $game;
     }
@@ -63,4 +72,9 @@ class GameDAO
       $dbh = NULL;
   }
   
+=======
+    return $game;
+  }
+
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
   }

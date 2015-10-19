@@ -3,10 +3,24 @@
 class rasterservice
   {
 
+<<<<<<< HEAD
   public static function makeRaster($array, $grootte)
   {
     $arrSoorten = soortService::getAllSoorten();
     print ("<div class='matrix grootte".$grootte." clearFix'>");
+=======
+  public static function makeRaster($array)
+  {
+    $games = gameService::getAllGames();
+    foreach ($games as $game)
+      {
+      if ($game->id == $array[0]->gameid)
+      {
+        $grootte = $game->grootte;
+      }
+      }
+
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
     for ($rij = 1; $rij <= $grootte; $rij++)
       {
       for ($kol = 1; $kol <= $grootte; $kol++)
@@ -14,6 +28,7 @@ class rasterservice
         $bln = organismeservice::checkPositionInArray($kol, $rij, $array);
         if ($bln == null)
         {
+<<<<<<< HEAD
           print "<div class='cell'><div class='innercell'></div></div>";
         }
         if ($bln != null)
@@ -34,10 +49,23 @@ class rasterservice
       }
   print ("</div>");
 }
+=======
+          print "[ - - - - ] ";
+        }
+        if ($bln != null)
+        {
+          print "[ ". $bln->soort . "[" . $bln->id . "]" . " ] ";
+        }
+        }
+        print "<br>";
+      }
+  }
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
 
   }
 
 /*
+<<<<<<< HEAD
 <?php  
 $games = gameService::getAllGames();
 $soorten = soortService::getAllSoorten();
@@ -70,4 +98,29 @@ for ($rij=1; $rij<=$grootte; $rij++) {
 print ("</div>");
 ?>
 
+=======
+
+function maakRaster($gamearray)
+{
+  for ($rij = 1; $rij <= $grootte; $rij++)
+    {
+    for ($kol = 1; $kol <= $grootte; $kol++)
+      {
+      $positie = organismeservice::checkPositionInArray($kol, $rij, $gamearray);
+      if ($positie == true)
+      {
+        print (" [ " . $kol . "/" . $rij . " ] ");
+      }
+      else
+      {
+        print (" ( " . $kol . "/" . $rij . " )");
+      }
+      }
+    print ("<br>");
+    }
+}
+
+?>
+ * 
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
  */

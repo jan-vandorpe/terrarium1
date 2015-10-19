@@ -3,7 +3,11 @@
     <type>org.netbeans.modules.php.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
+<<<<<<< HEAD
             <name>terrarium1</name>
+=======
+            <name>terrarium</name>
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
         </data>
     </configuration>
 </project>

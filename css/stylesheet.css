@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* OUTLINEZ
 
 body, header, section, footer, div {
@@ -52,4 +53,60 @@ footer {
 
 .minimg {
     max-width: 5em;
+=======
+/* OUTLINEZ*/
+
+body, header, section, footer, div {
+	outline:1px dashed red;
+}
+
+/* KLEURENSCHEMA 
+lichtgrijs  - #EDD5D1
+lichroze    - #EDD5D1
+lichbruin   - #E3D6C6
+lichtgroen  - #DDE0CD
+oranje      - #F9A646
+*/
+
+body {
+	background-color:#E3D6C6;
+}
+
+header {
+	background-color:#F9A646; 
+}
+
+.jumbotron {
+	background-color:#DDE0CD;
+}
+
+nav>.container-fluid {
+	background-color:#E3D6C6;
+}
+
+section>.container-fluid {
+	background-color:#E3D6C6;
+}
+
+footer {
+	background-color:#F9A646;
+}
+
+/* STRUCTUUR & LAY-OUT */
+
+.marg_l {
+	margin-left:1em;
+}
+
+.marg_r {
+    margin-right:1em;
+}
+
+.marg_b {
+    margin-bottom:1em;
+}
+
+.minimg {
+    max-width: 5em;
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
 }

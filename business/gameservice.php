@@ -1,26 +1,40 @@
 <?php
+<<<<<<< HEAD
 
 require_once("data/gameDAO.php");
 require_once("data/organismeDAO.php");
 require_once("organismeservice.php");
+=======
+require_once("data/gameDAO.php");
+require_once("data/organismeDAO.php");
+require_once("business/gameservice.php");
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
 
 class gameService
   {
 
+<<<<<<< HEAD
 // ***** NIEUWE GAME INITIALISEREN *****
   public static function initNewgame($grootte)
+=======
+  public static function initNewGame($grootte)
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
   {
     $game = GameDAO::createGame($grootte);
     organismeservice::initNewOrganismen($grootte, $game->id);
   }
 
+<<<<<<< HEAD
 // ***** LAAD ALLE GAMES IN ARRAY *****
+=======
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
   public static function getAllGames()
   {
     $arrGames = GameDAO::getAllGames();
     return $arrGames;
   }
 
+<<<<<<< HEAD
 // ***** NEXT STEP ARRAY *****
   public static function nextStep($arrPrevStep)
   {
@@ -144,6 +158,112 @@ class gameService
       $kolom = $organisme->kolom;
       $rij = $organisme->rij;
       $posities = rand(1, 4);
+=======
+  public static function nextStep($arrPrevStep)
+  {
+    $game = GameDAO::getGameFromId($arrPrevStep[0]->gameid);
+    $grootte = $game->grootte;
+    $arrNextStep = array();
+    $arrOpgegeten = array();
+    // SORTEER ARRAY
+    $arrPrevStep = gameService::sortArray($arrPrevStep);
+
+    foreach ($arrPrevStep as $prevOrganisme)
+      {
+      $prevOrganismeRechts = organismeservice::checkPositionInArray($prevOrganisme->kolom + 1, $prevOrganisme->rij, $arrPrevStep);
+      if ($prevOrganismeRechts == false && $prevOrganisme->soort > 1)
+      {
+        // MOVE RANDOM
+        $nextOrganisme = gameService::moveRandom($prevOrganisme, $arrPrevStep, $grootte);
+        array_push($arrNextStep, $nextOrganisme);
+      }
+      if ($prevOrganismeRechts != false && $prevOrganisme->soort > 1)
+      {
+        // ONDERNEEM ACTIE
+        if ($prevOrganisme->soort > $prevOrganismeRechts->soort)
+        {
+          $prevOrganisme->kolom = $prevOrganisme->kolom + 1;
+          // OPETEN
+          $key = array_search($prevOrganismeRechts, $arrPrevStep);
+          array_push($arrOpgegeten, $arrPrevStep[$key]);
+          array_push($arrNextStep, $prevOrganisme);
+        }
+        if ($prevOrganisme->soort < $prevOrganismeRechts->soort)
+        {
+          // LATEN STAAN
+          $nextOrganisme = $prevOrganisme;
+          array_push($arrNextStep, $nextOrganisme);
+        }
+        if ($prevOrganisme->soort == $prevOrganismeRechts->soort)
+        {
+          if ($prevOrganisme->kracht > $prevOrganismeRechts->kracht)
+          {
+            
+          }
+          if ($prevOrganisme->kracht == $prevOrganismeRechts->kracht)
+          {
+            $nextOrganisme = $prevOrganisme;
+            array_push($arrNextStep, $nextOrganisme);
+          }
+          if ($prevOrganisme->kracht < $prevOrganismeRechts->kracht)
+          {
+            
+          }
+        }
+      }
+      if ($prevOrganisme->soort == 1)
+      {
+        // LATEN STAAN
+        $nextOrganisme = $prevOrganisme;
+        array_push($arrNextStep, $nextOrganisme);
+      }
+      }
+
+    foreach ($arrNextStep as $next)
+      {
+      if (in_array($next, $arrOpgegeten))
+      {
+        $key = array_search($next, $arrNextStep);
+        unset($arrNextStep[$key]);
+      }
+      }
+    return $arrNextStep;
+  }
+
+  public static function sortArray($array)
+  {
+    $games = gameService::getAllGames();
+    foreach ($games as $game)
+      {
+      if ($game->id == $array[0]->gameid)
+      {
+        $grootte = $game->grootte;
+      }
+      }
+
+    $arrNew = array();
+    for ($i = 1; $i <= $grootte; $i++)
+      {
+      for ($j = 1; $j <= $grootte; $j++)
+        {
+        $org = organismeservice::checkPositionInArray($j, $i, $array);
+        if ($org != null)
+        {
+          array_push($arrNew, $org);
+        }
+        }
+      }
+    return $arrNew;
+  }
+
+  public static function moveRandom($organisme, $array, $grootte)
+  {
+    do
+      {
+      $posities = rand(1, 4);
+      $kolom = $organisme->kolom;
+      $rij = $organisme->rij;
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
       switch ($posities)
         {
         case 1: {
@@ -164,6 +284,7 @@ class gameService
           }
         }
       $check = organismeservice::checkPositionInArray($kolom, $rij, $array);
+<<<<<<< HEAD
       if ($check == false)
       {
         $check = organismeservice::checkPositionInArray($kolom, $rij, $nextarray);
@@ -171,12 +292,18 @@ class gameService
 
       if ($rij == 0 || $kolom == 0)
       {
+=======
+      if ($rij == 0 || $kolom == 0)
+      {
+        // check = true -> opnieuw controleren
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
         $check = true;
       }
       if ($rij > $grootte || $kolom > $grootte)
       {
         $check = true;
       }
+<<<<<<< HEAD
 
       $teller = $teller + 1;
       } while ($check != false && $teller < 5);
@@ -186,11 +313,15 @@ class gameService
       $kolom = $organisme->kolom;
       $rij = $organisme->rij;
     }
+=======
+      } while ($check != false);
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
     $organisme->kolom = $kolom;
     $organisme->rij = $rij;
     return $organisme;
   }
 
+<<<<<<< HEAD
   public static function sortArray($array)
   {
     $games = gameService::getAllGames();
@@ -238,3 +369,7 @@ class gameService
   }
 
   }
+=======
+  }
+
+>>>>>>> ccfceec09458a121cf332cb768b11970da8236d0
