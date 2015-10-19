@@ -1,0 +1,56 @@
+/* OUTLINEZ
+
+body, header, section, footer, div {
+	outline:1px dashed red;
+}
+
+/* KLEURENSCHEMA ALT
+lichtbeige  - #FFF2E7
+lichtgrijs  - #D0CABF
+grijs       - #B9B1A8
+bruin       - #DE8642
+donkergrijs - #4B4D52
+*/
+
+body {
+	background-color:#FFF2E7;
+}
+
+header {
+	background-color:#4B4D52; 
+}
+
+.jumbotron {
+	background-color:#4B4D52;
+	color:white;
+}
+
+nav>.container-fluid {
+	background-color:#FFF2E7;
+}
+
+section>.container-fluid {
+	background-color:#FFF2E7;
+}
+
+footer {
+	background-color:#4B4D52;
+}
+
+/* STRUCTUUR & LAY-OUT */
+
+.marg_l {
+	margin-left:1em;
+}
+
+.marg_r {
+    margin-right:1em;
+}
+
+.marg_b {
+    margin-bottom:1em;
+}
+
+.minimg {
+    max-width: 5em;
+}
